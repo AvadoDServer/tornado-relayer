@@ -1,4 +1,5 @@
 const express = require('express')
+const { web3ProviderOptions } = require('../config')
 const {
   netId,
   port,
@@ -74,6 +75,7 @@ console.log(`relayerAddress: ${web3.eth.defaultAccount}`)
 console.log(`mixers: ${JSON.stringify(mixers)}`)
 console.log(`netId: ${netId}`)
 console.log(`ethPrices: ${JSON.stringify(fetcher.ethPrices)}`)
+console.log(`web3 options: ${JSON.stringify(web3ProviderOptions)}`)
 
 const {
   GAS_PRICE_BUMP_PERCENTAGE,
