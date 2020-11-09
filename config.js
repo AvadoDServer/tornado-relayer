@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 module.exports = {
+  web3ProviderOptions: {timeout: 20000},
   netId: Number(process.env.NET_ID) || 42,
   redisUrl: process.env.REDIS_URL,
   rpcUrl: process.env.RPC_URL || 'https://kovan.infura.io/',

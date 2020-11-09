@@ -1,5 +1,6 @@
 const Web3 = require('web3')
-const { defaultGasPrice, oracleRpcUrl, oracleAddress } = require('../config')
+const Web3HttpProvider = require('web3-providers-http')
+const { defaultGasPrice, oracleRpcUrl, oracleAddress, web3ProviderOptions } = require('../config')
 const { getArgsForOracle } = require('./utils')
 const { redisClient } = require('./redis')
 const priceOracleABI = require('../abis/PriceOracle.abi.json')
@@ -7,7 +8,7 @@ const priceOracleABI = require('../abis/PriceOracle.abi.json')
 class Fetcher {
   constructor(web3) {
     this.web3 = web3
-    this.oracleWeb3 = new Web3(oracleRpcUrl)
+    this.oracleWeb3 = new Web3(new Web3HttpProvider(oracleRpcUrl, web3ProviderOptions));
     this.oracle = new this.oracleWeb3.eth.Contract(priceOracleABI, oracleAddress)
     this.ethPrices = {
       dai: '6700000000000000', // 0.0067
