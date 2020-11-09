@@ -1,4 +1,5 @@
 const Web3 = require('web3')
+const Web3HttpProvider = require('web3-providers-http')
 const { rpcUrl, privateKey,web3ProviderOptions } = require('../config')
 
 function setup() {
